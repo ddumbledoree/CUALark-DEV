@@ -1,0 +1,38 @@
+[
+  {
+    "action_type": "click",
+    "action_inputs": {
+      "start_box": "[0.030,0.111,0.030,0.111]"
+    },
+    "wait_ms": 500
+  },
+  {
+    "action_type": "click",
+    "action_inputs": {
+      "start_box": "[0.049,0.073,0.049,0.073]"
+    },
+    "wait_ms": 500
+  },
+  {
+    "action_type": "type",
+    "action_inputs": {
+      "content": "CUA测试群"
+    },
+    "wait_ms": 800
+  },
+  {
+    "action_type": "scroll",
+    "action_inputs": {
+      "start_box": "[0.200,0.500,0.200,0.500]",
+      "direction": "down"
+    },
+    "wait_ms": 500
+  },
+  {
+    "action_type": "click",
+    "action_inputs": {
+      "start_box": "[0.564,0.088,0.564,0.088]"
+    },
+    "wait_ms": 500
+  }
+]

@@ -1,0 +1,11 @@
+node_modules/
+dist/
+.env
+traces/
+reports/
+.npm-cache/
+.codex/
+.claude/
+REFONLY_cc_src/
+artifacts/**/*.png
+*.log

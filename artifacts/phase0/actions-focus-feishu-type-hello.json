@@ -1,0 +1,23 @@
+[
+  {
+    "action_type": "click",
+    "action_inputs": {
+      "start_box": "[0.340,0.980,0.340,0.980]"
+    },
+    "wait_ms": 900
+  },
+  {
+    "action_type": "click",
+    "action_inputs": {
+      "start_box": "[0.480,0.616,0.480,0.616]"
+    },
+    "wait_ms": 400
+  },
+  {
+    "action_type": "type",
+    "action_inputs": {
+      "content": "Hello World"
+    },
+    "wait_ms": 900
+  }
+]

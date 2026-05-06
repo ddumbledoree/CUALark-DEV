@@ -1,0 +1,17 @@
+{
+  "id": "im-send-text-001",
+  "title": "IM send text smoke task",
+  "targetProduct": "im",
+  "instruction": "在飞书 IM 中搜索 CUA测试群，并发送 Hello World，然后确认发送成功。",
+  "initialState": "Phase 1 mock validation: no real desktop action is executed.",
+  "expectedResult": "Mock run proves TaskSpec loading, operator injection, and trace writing.",
+  "safety": {
+    "allowedChats": ["CUA测试群"],
+    "allowedUsers": [],
+    "forbidDelete": true
+  },
+  "evaluator": {
+    "type": "mock",
+    "expectedStatus": "passed"
+  }
+}

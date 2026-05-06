@@ -1,0 +1,16 @@
+[
+  {
+    "action_type": "click",
+    "action_inputs": {
+      "start_box": "[0.049,0.073,0.049,0.073]"
+    },
+    "wait_ms": 500
+  },
+  {
+    "action_type": "type",
+    "action_inputs": {
+      "content": "CUA测试群"
+    },
+    "wait_ms": 800
+  }
+]

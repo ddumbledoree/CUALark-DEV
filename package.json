@@ -1,0 +1,25 @@
+{
+  "name": "cua-lark",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Computer-Use Agent framework for Feishu/Lark desktop GUI testing.",
+  "type": "module",
+  "scripts": {
+    "build": "tsc",
+    "run-task": "npm run build && node dist/src/cli/run-task.js",
+    "lint": "tsc --noEmit",
+    "typecheck": "tsc --noEmit",
+    "test": "npm run build && node dist/tests/load-task.test.js"
+  },
+  "dependencies": {
+    "@ui-tars/operator-nut-js": "1.2.3",
+    "@ui-tars/sdk": "1.2.3",
+    "dotenv": "^16.4.7",
+    "uuid": "^11.1.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.7",
+    "tsx": "^4.19.2",
+    "typescript": "^5.7.3"
+  }
+}

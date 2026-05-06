@@ -1,0 +1,30 @@
+[
+  {
+    "action_type": "click",
+    "action_inputs": {
+      "start_box": "[0.340,0.980,0.340,0.980]"
+    },
+    "wait_ms": 900
+  },
+  {
+    "action_type": "click",
+    "action_inputs": {
+      "start_box": "[0.480,0.616,0.480,0.616]"
+    },
+    "wait_ms": 300
+  },
+  {
+    "action_type": "hotkey",
+    "action_inputs": {
+      "key": "ctrl+a"
+    },
+    "wait_ms": 300
+  },
+  {
+    "action_type": "hotkey",
+    "action_inputs": {
+      "key": "backspace"
+    },
+    "wait_ms": 500
+  }
+]

@@ -64,8 +64,6 @@ TaskSpec / Natural Instruction
 
 ## TaskSpec 示例
 
-正式交付候选：
-
 - `tasks/im-open-chat-001.json`：IM 搜索并进入测试群，不发送消息，VLM 截图验证。
 - `tasks/im-send-group-hello-world-001.json`：向测试群发送白名单测试文本，带发送安全阀。
 - `tasks/im-send-contact-hello-world-001.json`：向测试联系人发送白名单测试文本，带发送安全阀。
@@ -151,13 +149,9 @@ npm.cmd test
 - Phase 3：Markdown report、report summary、IM/Calendar evaluator 单测通过。
 - Phase 4：坐标映射修复后，IM 真机端到端任务 passed。
 
-## 交付材料建议
-
-GitHub repo 只提交代码、任务契约、文档和可脱敏的轻量证据。Demo 视频和复赛 docx 建议通过竞赛提交系统或 Release 附件交付，避免把大文件和个人信息写入主分支历史。
 
 ## 下一步
 
 1. 将 Calendar 创建日程任务从 calibrated fallback 打磨到稳定可复现。
-2. 在测试租户完成 lark-cli 授权，跑通 IM/Calendar API evaluator 的只读真值验证。
-3. 生成一份脱敏 summary report，作为 README 可链接的样例报告。
-4. 把 Demo 视频单独上传到 Release 或竞赛平台，不进入源码主分支。
+2. 在测试租户完成 lark-cli 授权，跑通 IM/Calendar API evaluator 的只读真值验证，免去调用VLM验证状态的开销。
+3. 拓展飞书开放平台API。

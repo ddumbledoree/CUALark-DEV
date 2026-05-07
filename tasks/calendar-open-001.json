@@ -1,0 +1,32 @@
+{
+  "id": "calendar-open-001",
+  "title": "CAL-001 open Calendar",
+  "targetProduct": "calendar",
+  "instruction": "Open the Calendar product in Feishu desktop and confirm that the current view is Calendar.",
+  "initialState": "Feishu desktop is open with a dedicated test account. Do not create, edit, or delete real events.",
+  "expectedResult": "The final screenshot shows the Feishu Calendar view, such as a date grid, calendar sidebar, or event list.",
+  "safety": {
+    "allowedCalendars": ["CUA-test-calendar"],
+    "allowedUsers": [],
+    "forbidDelete": true
+  },
+  "actions": [
+    {
+      "type": "click",
+      "x": 292,
+      "y": 635
+    },
+    {
+      "type": "wait",
+      "waitMs": 1500
+    },
+    {
+      "type": "finished"
+    }
+  ],
+  "evaluator": {
+    "type": "vlm_screenshot",
+    "question": "Does the screenshot show the Feishu Calendar page, with no event created, edited, or deleted?",
+    "expectedAnswer": "passed"
+  }
+}

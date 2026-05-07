@@ -1,0 +1,58 @@
+{
+  "id": "calendar-create-event-001",
+  "title": "CAL-002 create Calendar event",
+  "targetProduct": "calendar",
+  "instruction": "Create a test event titled CUA Smoke in the dedicated test calendar, then verify that the event exists.",
+  "initialState": "Feishu desktop is open with a dedicated test account. Only the dedicated test calendar may be used.",
+  "expectedResult": "The dedicated test calendar contains an event titled CUA Smoke.",
+  "safety": {
+    "allowedCalendars": ["CUA-test-calendar"],
+    "allowedUsers": ["CUA-test-user-a"],
+    "forbidDelete": true
+  },
+  "actions": [
+    {
+      "type": "click",
+      "x": 292,
+      "y": 635
+    },
+    {
+      "type": "wait",
+      "waitMs": 1000
+    },
+    {
+      "type": "double_click",
+      "x": 1245,
+      "y": 594
+    },
+    {
+      "type": "wait",
+      "waitMs": 500
+    },
+    {
+      "type": "type",
+      "content": "CUA Smoke"
+    },
+    {
+      "type": "wait",
+      "waitMs": 500
+    },
+    {
+      "type": "click",
+      "x": 1157,
+      "y": 875
+    },
+    {
+      "type": "wait",
+      "waitMs": 1500
+    },
+    {
+      "type": "finished"
+    }
+  ],
+  "evaluator": {
+    "type": "vlm_screenshot",
+    "question": "Does the screenshot show that a Calendar event titled CUA Smoke has been saved or appears in the calendar grid, without modifying or deleting existing real events?",
+    "expectedAnswer": "passed"
+  }
+}

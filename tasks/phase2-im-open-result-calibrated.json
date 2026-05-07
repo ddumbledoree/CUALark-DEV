@@ -1,0 +1,54 @@
+{
+  "id": "phase2-im-open-result-calibrated",
+  "title": "Phase 2 IM search and open result calibrated desktop action",
+  "targetProduct": "im",
+  "instruction": "使用已校准坐标打开飞书搜索，搜索 CUA测试群，点击第一个安全搜索结果进入会话，但不发送任何消息。",
+  "initialState": "飞书桌面端可被 operator 唤起；当前账号和可见内容为测试环境或已确认无敏感信息。",
+  "expectedResult": "进入 CUA测试群 或相关测试群会话页面，trace 记录聚焦、搜索、选择结果、等待和结束；不发送消息。",
+  "safety": {
+    "allowedChats": ["CUA测试群"],
+    "allowedUsers": [],
+    "forbidDelete": true
+  },
+  "actions": [
+    {
+      "type": "click",
+      "x": 345,
+      "y": 267
+    },
+    {
+      "type": "hotkey",
+      "key": "ctrl+a"
+    },
+    {
+      "type": "type",
+      "content": "CUA测试群"
+    },
+    {
+      "type": "wait",
+      "waitMs": 1000
+    },
+    {
+      "type": "click",
+      "x": 520,
+      "y": 405
+    },
+    {
+      "type": "wait",
+      "waitMs": 1000
+    },
+    {
+      "type": "finished"
+    }
+  ],
+  "evaluator": {
+    "type": "manual",
+    "checklist": [
+      "截图显示进入 CUA测试群 或相关测试群会话",
+      "没有发送消息",
+      "没有按 Enter/Return",
+      "steps.jsonl 包含 action.safety 且 allowed=true",
+      "动作作用在飞书窗口而非 Codex"
+    ]
+  }
+}

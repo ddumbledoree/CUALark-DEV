@@ -1,0 +1,27 @@
+{
+  "id": "phase2-desktop-observe",
+  "title": "Phase 2 desktop operator observe-only smoke",
+  "targetProduct": "im",
+  "instruction": "聚焦飞书桌面端，采集初始截图，等待 500ms，再采集动作后截图，用于验证真实 desktop operator 的截图与 trace 管线。",
+  "initialState": "飞书桌面端已运行，且当前账号和可见内容应为测试环境或无敏感信息。",
+  "expectedResult": "trace 目录下生成 task.json、steps.jsonl、result.json 和 screenshots/000.png、screenshots/001.png。",
+  "safety": {
+    "allowedChats": ["CUA测试群"],
+    "allowedUsers": [],
+    "forbidDelete": true
+  },
+  "actions": [
+    {
+      "type": "wait",
+      "waitMs": 500
+    }
+  ],
+  "evaluator": {
+    "type": "manual",
+    "checklist": [
+      "截图文件存在且不包含敏感信息",
+      "steps.jsonl 记录 screenshot.captured 与 action.executed",
+      "result.json 状态为 blocked，等待后续 evaluator 接入"
+    ]
+  }
+}

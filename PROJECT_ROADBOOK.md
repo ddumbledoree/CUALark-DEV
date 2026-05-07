@@ -1,5 +1,35 @@
 # CUA-Lark Project Roadbook
 
+## 2026-05-06 路线调整：API evaluator 优先通过 lark-cli
+
+### 官方事实
+
+- 飞书/Lark 官方推荐的 Agent 工具路径可以采用 `AI Agent -> lark-cli -> 飞书 OAPI`。
+- `lark-cli` 是飞书/Lark 官方发布在 GitHub 的 CLI 开源项目，面向人类与 AI Agent，支持登录授权、JSON 输出、shortcut/API/raw API 等调用方式。
+- 飞书 OAPI 覆盖大量开放平台能力，但具体 evaluator 能否读取 IM/Calendar 真值，取决于应用权限、身份、scope、测试群/测试日历配置与管理员授权。
+
+### 概念边界
+
+- CUA-Lark 的核心仍是 GUI Agent：自然语言或 TaskSpec -> 截图观察 -> VLM/Agent 决策 -> 桌面 GUI 操作 -> trace。
+- API evaluator 不用于替代 GUI 操作，不用 API 直接完成发送消息或创建日程。
+- API evaluator 的职责是在 GUI 操作之后，通过 `lark-cli` 查询飞书后端状态，验证业务结果是否真实发生。
+- 当 `lark-cli`/OAPI 权限不足时，可以降级到 `vlm_screenshot` 或 manual evaluator，但报告必须标注不确定性。
+
+### 实现路线
+
+1. 先实现 `lark-cli` evaluator 基座：统一调用 CLI、读取 JSON、处理 stderr/exit code/timeout。
+2. 再实现 IM message check：GUI 发送唯一测试消息后，evaluator 查询测试群最近消息，匹配 `runId` 或期望文本。
+3. 后续实现 Calendar event check：GUI 创建/修改测试日程后，evaluator 查询测试日历事件，匹配标题、时间、参与人。
+4. `TaskSpec.evaluator` 增加 `feishu_im_message_check` / `feishu_calendar_event_check`，并保留 `vlm_screenshot` 作为半自动 fallback。
+5. 所有 API evaluator 只允许测试资源白名单，不提交真实 key、cookie、token 或敏感截图。
+
+### 当前第一版约束
+
+- 第一版不硬编码未经本地 `lark-cli schema` 确认的具体 IM endpoint。
+- TaskSpec 通过 `larkCliArgs` 提供查询命令，项目负责执行、轮询、解析输出、匹配期望消息文本。
+- 测试群允许发送无敏感、唯一 runId 的测试消息；发送必须限定在白名单 `allowedChats`，使用 idempotency-key，禁止删除/邀请等风险动作。
+- 后续在测试 app、测试群和权限确认后，再把 `larkCliArgs` 收敛为稳定的 IM/Calendar evaluator 命令模板。
+
 > 用途：这是给新 thread / 新协作者的高密度项目路书。读完本文，应能从零理解项目目标、边界、术语、架构决策、开发顺序、复赛级交付标准和第一步执行清单。
 
 ## 0. 一句话目标

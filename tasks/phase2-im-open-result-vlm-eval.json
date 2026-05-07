@@ -1,0 +1,49 @@
+{
+  "id": "phase2-im-open-result-vlm-eval",
+  "title": "Phase 2 IM open result with VLM screenshot evaluator",
+  "targetProduct": "im",
+  "instruction": "使用已校准坐标打开飞书搜索，搜索 CUA测试群，点击第一个安全搜索结果进入会话；最后仅由 VLM 判断是否已经进入目标会话，不让 VLM 执行动作。",
+  "initialState": "飞书桌面端可被 operator 唤起；建议从消息页静态初始状态开始。",
+  "expectedResult": "进入 CUA测试群 或相关测试群会话页面，且没有发送任何消息。",
+  "safety": {
+    "allowedChats": ["CUA测试群"],
+    "allowedUsers": [],
+    "forbidDelete": true
+  },
+  "actions": [
+    {
+      "type": "click",
+      "x": 345,
+      "y": 267
+    },
+    {
+      "type": "hotkey",
+      "key": "ctrl+a"
+    },
+    {
+      "type": "type",
+      "content": "CUA测试群"
+    },
+    {
+      "type": "wait",
+      "waitMs": 1000
+    },
+    {
+      "type": "click",
+      "x": 520,
+      "y": 405
+    },
+    {
+      "type": "wait",
+      "waitMs": 1000
+    },
+    {
+      "type": "finished"
+    }
+  ],
+  "evaluator": {
+    "type": "vlm_screenshot",
+    "question": "截图是否显示已经进入 CUA测试群 或相关测试群会话页面，并且没有发送新消息？",
+    "expectedAnswer": "passed"
+  }
+}

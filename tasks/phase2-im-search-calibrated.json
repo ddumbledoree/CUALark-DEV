@@ -1,0 +1,40 @@
+{
+  "id": "phase2-im-search-calibrated",
+  "title": "Phase 2 IM search calibrated desktop action",
+  "targetProduct": "im",
+  "instruction": "使用已校准坐标点击飞书左侧搜索框，输入 CUA测试群，等待观察结果，不发送消息。",
+  "initialState": "飞书桌面端可被 operator 唤起；当前账号和可见内容为测试环境或已确认无敏感信息。",
+  "expectedResult": "搜索框中出现 CUA测试群，trace 记录聚焦、截图、点击、输入、等待和结束；不发送消息。",
+  "safety": {
+    "allowedChats": ["CUA测试群"],
+    "allowedUsers": [],
+    "forbidDelete": true
+  },
+  "actions": [
+    {
+      "type": "click",
+      "x": 345,
+      "y": 267
+    },
+    {
+      "type": "type",
+      "content": "CUA测试群"
+    },
+    {
+      "type": "wait",
+      "waitMs": 1000
+    },
+    {
+      "type": "finished"
+    }
+  ],
+  "evaluator": {
+    "type": "manual",
+    "checklist": [
+      "搜索框或搜索结果区域出现 CUA测试群",
+      "没有发送消息",
+      "steps.jsonl 包含 action.safety 且 allowed=true",
+      "截图显示动作作用在飞书窗口而非 Codex"
+    ]
+  }
+}

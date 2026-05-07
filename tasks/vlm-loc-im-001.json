@@ -1,0 +1,44 @@
+{
+  "id": "vlm-loc-im-001",
+  "title": "VLM LOC IM search box",
+  "targetProduct": "im",
+  "instruction": "Search for CUA-test-chat in Feishu IM and open the dedicated test chat. Do not send messages.",
+  "initialState": "Feishu desktop is open with a dedicated test account. Only CUA-test-chat may be opened.",
+  "expectedResult": "The search results show CUA-test-chat and the trace contains locator.vlm events.",
+  "safety": {
+    "allowedChats": ["CUA-test-chat"],
+    "allowedUsers": [],
+    "forbidDelete": true
+  },
+  "steps": [
+    {
+      "action": "locate_and_click",
+      "targetDescription": "飞书左上方搜索框，带放大镜图标"
+    },
+    {
+      "action": "hotkey",
+      "hotkey": "ctrl+a"
+    },
+    {
+      "action": "locate_and_type",
+      "targetDescription": "搜索输入框",
+      "typeContent": "CUA-test-chat"
+    },
+    {
+      "action": "wait",
+      "waitMs": 1000
+    },
+    {
+      "action": "locate_and_click",
+      "targetDescription": "搜索结果中包含 CUA-test-chat 的条目"
+    }
+  ],
+  "evaluator": {
+    "type": "manual",
+    "checklist": [
+      "搜索结果显示 CUA-test-chat",
+      "trace 含 locator.vlm 事件",
+      "没有发送任何消息"
+    ]
+  }
+}

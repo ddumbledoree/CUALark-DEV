@@ -1,0 +1,21 @@
+{
+  "id": "phase2-vlm-loop-observe",
+  "title": "Phase 2 VLM agent loop observe-only smoke",
+  "targetProduct": "im",
+  "instruction": "观察当前截图，不执行任何真实飞书业务操作；如果无法确认任务已完成，则等待 500ms 后继续观察。",
+  "initialState": "使用 mock operator 或已确认无敏感信息的飞书桌面测试环境。",
+  "expectedResult": "Agent Loop 能完成截图、VLM 决策、动作解析、执行 wait/finished、再次观察，并写入 trace。",
+  "safety": {
+    "allowedChats": ["CUA测试群"],
+    "allowedUsers": [],
+    "forbidDelete": true
+  },
+  "evaluator": {
+    "type": "manual",
+    "checklist": [
+      "steps.jsonl 包含 screenshot.captured、vlm.action、action.executed",
+      "VLM 动作只包含 wait 或 finished",
+      "没有执行点击、输入、发送消息等真实业务动作"
+    ]
+  }
+}

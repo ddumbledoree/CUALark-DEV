@@ -1,0 +1,52 @@
+{
+  "id": "im-open-chat-001",
+  "title": "IM open test chat",
+  "targetProduct": "im",
+  "instruction": "Search for CUA-test-chat in Feishu IM and open the dedicated test chat. Do not send messages.",
+  "initialState": "Feishu desktop is open with a dedicated test account. Only CUA-test-chat may be opened.",
+  "expectedResult": "The final screenshot shows the dedicated test chat, the input box is empty, and no new message was sent.",
+  "safety": {
+    "allowedChats": ["CUA-test-chat"],
+    "allowedUsers": [],
+    "forbidDelete": true
+  },
+  "actions": [
+    {
+      "type": "click",
+      "x": 345,
+      "y": 267
+    },
+    {
+      "type": "hotkey",
+      "key": "ctrl+a"
+    },
+    {
+      "type": "type",
+      "content": "CUA-test-chat"
+    },
+    {
+      "type": "wait",
+      "waitMs": 1000
+    },
+    {
+      "type": "click",
+      "x": 520,
+      "y": 405
+    },
+    {
+      "type": "wait",
+      "waitMs": 1000
+    },
+    {
+      "type": "finished"
+    }
+  ],
+  "evaluator": {
+    "type": "manual",
+    "checklist": [
+      "The final screenshot shows the dedicated test chat.",
+      "The input box is empty.",
+      "No new message was sent."
+    ]
+  }
+}

@@ -7,9 +7,15 @@
   "scripts": {
     "build": "tsc",
     "run-task": "npm run build && node dist/src/cli/run-task.js",
+    "agent-loop": "npm run build && node dist/src/cli/agent-loop.js",
+    "agent-v2": "npm run build && node dist/src/cli/agent-loop-v2.js",
+    "report": "npm run build && node dist/src/cli/generate-report.js",
+    "report-summary": "npm run build && node dist/src/cli/generate-report-summary.js",
+    "lark-cli-smoke": "npm run build && node dist/src/cli/lark-cli-smoke.js",
+    "vlm-smoke": "npm run build && node dist/src/cli/vlm-smoke.js",
     "lint": "tsc --noEmit",
     "typecheck": "tsc --noEmit",
-    "test": "npm run build && node dist/tests/load-task.test.js"
+    "test": "npm run build && node dist/tests/load-task.test.js && node dist/tests/parse-vlm-action.test.js && node dist/tests/action-safety.test.js && node dist/tests/vlm-locator.test.js && node dist/tests/planner.test.js && node dist/tests/markdown-report.test.js && node dist/tests/report-summary.test.js && node dist/tests/im-message-evaluator.test.js && node dist/tests/calendar-event-evaluator.test.js"
   },
   "dependencies": {
     "@ui-tars/operator-nut-js": "1.2.3",
@@ -18,6 +24,7 @@
     "uuid": "^11.1.0"
   },
   "devDependencies": {
+    "@larksuite/cli": "^1.0.24",
     "@types/node": "^22.10.7",
     "tsx": "^4.19.2",
     "typescript": "^5.7.3"

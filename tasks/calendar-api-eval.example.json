@@ -1,0 +1,31 @@
+{
+  "id": "calendar-api-eval-example",
+  "title": "Calendar API evaluator example",
+  "targetProduct": "calendar",
+  "instruction": "Read the dedicated test calendar and verify that a known test event exists.",
+  "initialState": "lark-cli is authorized and the test app has read-only Calendar permissions. This task does not execute GUI write actions.",
+  "expectedResult": "The lark-cli output contains the expected test event title, time, or attendee fields.",
+  "safety": {
+    "allowedCalendars": ["CUA-test-calendar"],
+    "allowedUsers": ["CUA-test-user-a"],
+    "forbidDelete": true
+  },
+  "actions": [
+    {
+      "type": "note",
+      "note": "Read-only API evaluator example; no desktop action is required."
+    },
+    {
+      "type": "finished"
+    }
+  ],
+  "evaluator": {
+    "type": "feishu_calendar_event_check",
+    "expectedTitle": "CUA-Lark Calendar Smoke",
+    "expectedStartText": "2026-05-07",
+    "calendarName": "CUA-test-calendar",
+    "larkCliArgs": ["api", "GET", "/open-apis/calendar/v4/calendars/primary/events"],
+    "timeoutMs": 10000,
+    "pollIntervalMs": 1000
+  }
+}

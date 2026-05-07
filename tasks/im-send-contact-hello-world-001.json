@@ -1,0 +1,68 @@
+{
+  "id": "im-send-contact-hello-world-001",
+  "title": "IM send Hello world to external test contact",
+  "targetProduct": "im",
+  "instruction": "\u901a\u8fc7\u81ea\u7136\u8bed\u8a00\u6d4b\u8bd5\u7528\u4f8b\u6267\u884c\uff1a\u5728\u98de\u4e66 IM \u4e2d\u641c\u7d22\u5916\u90e8\u4e2a\u4eba\u8054\u7cfb\u4eba\u201cCUA\u6d4b\u8bd5\u8054\u7cfb\u4ebaA\u201d\uff0c\u8fdb\u5165\u8be5\u4f1a\u8bdd\u540e\u53d1\u9001\u6d88\u606f\u201cHello world!\u201d\uff0c\u5e76\u9a8c\u8bc1\u6d88\u606f\u51fa\u73b0\u5728\u76ee\u6807\u4e2a\u4eba\u4f1a\u8bdd\u4e2d\u3002",
+  "initialState": "Feishu desktop is open with a dedicated test account. The named external contact must be a dedicated test contact controlled by the user.",
+  "expectedResult": "The target contact conversation contains a newly sent message with exact text Hello world!.",
+  "safety": {
+    "allowedChats": [],
+    "allowedUsers": ["CUA\u6d4b\u8bd5\u8054\u7cfb\u4ebaA"],
+    "allowedMessageTexts": ["Hello world!"],
+    "allowSend": true,
+    "forbidDelete": true
+  },
+  "actions": [
+    {
+      "type": "click",
+      "x": 345,
+      "y": 267
+    },
+    {
+      "type": "hotkey",
+      "key": "ctrl+a"
+    },
+    {
+      "type": "type",
+      "content": "CUA\u6d4b\u8bd5\u8054\u7cfb\u4ebaA"
+    },
+    {
+      "type": "wait",
+      "waitMs": 1000
+    },
+    {
+      "type": "click",
+      "x": 520,
+      "y": 405
+    },
+    {
+      "type": "wait",
+      "waitMs": 1000
+    },
+    {
+      "type": "click",
+      "x": 1040,
+      "y": 895
+    },
+    {
+      "type": "type",
+      "content": "Hello world!"
+    },
+    {
+      "type": "hotkey",
+      "key": "enter"
+    },
+    {
+      "type": "wait",
+      "waitMs": 1500
+    },
+    {
+      "type": "finished"
+    }
+  ],
+  "evaluator": {
+    "type": "vlm_screenshot",
+    "question": "Does the screenshot show the target test contact conversation and a newly sent message with exact text Hello world!?",
+    "expectedAnswer": "passed"
+  }
+}

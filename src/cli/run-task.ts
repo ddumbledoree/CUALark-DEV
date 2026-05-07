@@ -2,6 +2,8 @@ import 'dotenv/config';
 
 import { loadTaskSpec } from '../core/load-task.js';
 import { runTask } from '../core/run-task.js';
+import { createLarkCliClientFromEnv } from '../evaluators/lark-cli-client.js';
+import { createVlmProvider } from '../models/create-vlm-provider.js';
 import { createOperator } from '../operators/create-operator.js';
 
 async function main(): Promise<void> {
@@ -15,7 +17,12 @@ async function main(): Promise<void> {
 
   const task = await loadTaskSpec(taskPath);
   const operator = createOperator(operatorName);
-  const result = await runTask(task, operator, { traceDir });
+  const vlm = task.evaluator.type === 'vlm_screenshot' ? createVlmProvider() : undefined;
+  const larkCli = task.evaluator.type === 'feishu_im_message_check'
+    || task.evaluator.type === 'feishu_calendar_event_check'
+    ? createLarkCliClientFromEnv()
+    : undefined;
+  const result = await runTask(task, operator, { traceDir, vlm, larkCli });
 
   console.log(JSON.stringify(result, null, 2));
 }

@@ -1,0 +1,66 @@
+{
+  "id": "vlm-cal-create-event-001",
+  "title": "VLM Calendar create event 5月7日12点 提交复赛截止",
+  "targetProduct": "calendar",
+  "instruction": "创建一个5月7日中午12点的日历标题是提交复赛截止",
+  "initialState": "Feishu desktop is open fullscreen with a dedicated test account. Do not delete existing events.",
+  "expectedResult": "The calendar shows a new event on May 7 at 12:00 titled 提交复赛截止.",
+  "safety": {
+    "allowedCalendars": ["CUA-test-calendar"],
+    "allowedCalendarTitles": ["提交复赛截止"],
+    "allowedUsers": [],
+    "forbidDelete": true
+  },
+  "steps": [
+    {
+      "action": "click",
+      "x": 12,
+      "y": 170,
+      "expectedState": "页面已切换到飞书日历视图，显示日历网格或日历事件列表"
+    },
+    {
+      "action": "wait",
+      "waitMs": 2000
+    },
+    {
+      "action": "locate_and_click",
+      "targetDescription": "创建按钮或新建事件按钮",
+      "uiType": "button",
+      "regionHint": "main_content",
+      "expectedState": "弹出了新建日历事件对话框，包含标题输入框和日期时间选择"
+    },
+    {
+      "action": "wait",
+      "waitMs": 1000
+    },
+    {
+      "action": "locate_and_type",
+      "targetDescription": "事件标题输入框",
+      "uiType": "input",
+      "regionHint": "main_content",
+      "nearbyText": "标题",
+      "typeContent": "提交复赛截止"
+    },
+    {
+      "action": "wait",
+      "waitMs": 500
+    },
+    {
+      "action": "locate_and_click",
+      "targetDescription": "保存或确认按钮",
+      "uiType": "button",
+      "regionHint": "main_content",
+      "nearbyText": "保存",
+      "expectedState": "日历事件已创建成功，日历网格中出现了标题为提交复赛截止的事件"
+    },
+    {
+      "action": "wait",
+      "waitMs": 2000
+    }
+  ],
+  "evaluator": {
+    "type": "vlm_screenshot",
+    "question": "Does the screenshot show a calendar event titled 提交复赛截止 scheduled for May 7 at 12:00, without modifying or deleting existing events?",
+    "expectedAnswer": "passed"
+  }
+}

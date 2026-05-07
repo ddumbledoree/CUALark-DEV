@@ -1,0 +1,28 @@
+{
+  "id": "vlm-loc-cal-001",
+  "title": "VLM LOC Calendar button",
+  "targetProduct": "calendar",
+  "instruction": "Open the Calendar product in Feishu desktop and confirm that the current view is Calendar.",
+  "initialState": "Feishu desktop is open with a dedicated test account. Do not create, edit, or delete real events.",
+  "expectedResult": "The final screenshot shows the Feishu Calendar view.",
+  "safety": {
+    "allowedCalendars": ["CUA-test-calendar"],
+    "allowedUsers": [],
+    "forbidDelete": true
+  },
+  "steps": [
+    {
+      "action": "locate_and_click",
+      "targetDescription": "左侧导航栏日历图标"
+    },
+    {
+      "action": "wait",
+      "waitMs": 1500
+    }
+  ],
+  "evaluator": {
+    "type": "vlm_screenshot",
+    "question": "Does the screenshot show the Feishu Calendar page, with no event created, edited, or deleted?",
+    "expectedAnswer": "passed"
+  }
+}

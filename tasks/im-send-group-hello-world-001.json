@@ -1,0 +1,68 @@
+{
+  "id": "im-send-group-hello-world-001",
+  "title": "IM send Hello world to CUA test group",
+  "targetProduct": "im",
+  "instruction": "\u901a\u8fc7\u81ea\u7136\u8bed\u8a00\u6d4b\u8bd5\u7528\u4f8b\u6267\u884c\uff1a\u5728\u98de\u4e66 IM \u4e2d\u641c\u7d22\u7fa4\u7ec4\u201cCUA\u6d4b\u8bd5\u7fa4\u201d\uff0c\u8fdb\u5165\u8be5\u7fa4\u540e\u53d1\u9001\u6d88\u606f\u201cHello world!\u201d\uff0c\u5e76\u9a8c\u8bc1\u6d88\u606f\u51fa\u73b0\u5728\u76ee\u6807\u7fa4\u4f1a\u8bdd\u4e2d\u3002",
+  "initialState": "Feishu desktop is open with a dedicated test account. Only the dedicated test group may receive the message.",
+  "expectedResult": "The CUA test group conversation contains a newly sent message with exact text Hello world!.",
+  "safety": {
+    "allowedChats": ["\u0043\u0055\u0041\u6d4b\u8bd5\u7fa4"],
+    "allowedUsers": [],
+    "allowedMessageTexts": ["Hello world!"],
+    "allowSend": true,
+    "forbidDelete": true
+  },
+  "actions": [
+    {
+      "type": "click",
+      "x": 345,
+      "y": 267
+    },
+    {
+      "type": "hotkey",
+      "key": "ctrl+a"
+    },
+    {
+      "type": "type",
+      "content": "\u0043\u0055\u0041\u6d4b\u8bd5\u7fa4"
+    },
+    {
+      "type": "wait",
+      "waitMs": 1000
+    },
+    {
+      "type": "click",
+      "x": 520,
+      "y": 405
+    },
+    {
+      "type": "wait",
+      "waitMs": 1000
+    },
+    {
+      "type": "click",
+      "x": 1040,
+      "y": 895
+    },
+    {
+      "type": "type",
+      "content": "Hello world!"
+    },
+    {
+      "type": "hotkey",
+      "key": "enter"
+    },
+    {
+      "type": "wait",
+      "waitMs": 1500
+    },
+    {
+      "type": "finished"
+    }
+  ],
+  "evaluator": {
+    "type": "vlm_screenshot",
+    "question": "Does the screenshot show the target CUA test group conversation and a newly sent message with exact text Hello world!?",
+    "expectedAnswer": "passed"
+  }
+}

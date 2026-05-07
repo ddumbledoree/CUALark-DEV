@@ -1,0 +1,37 @@
+{
+  "id": "im-message-api-eval-example",
+  "title": "IM message API evaluator example",
+  "targetProduct": "im",
+  "instruction": "Read-only example: use lark-cli output to verify an expected message exists in the test chat. This task does not send a message.",
+  "initialState": "lark-cli is installed and authenticated with read access to the dedicated test chat.",
+  "expectedResult": "The expected test message text is found through lark-cli.",
+  "safety": {
+    "allowedChats": ["CUA测试群"],
+    "allowedUsers": [],
+    "forbidDelete": true
+  },
+  "actions": [
+    {
+      "type": "finished"
+    }
+  ],
+  "evaluator": {
+    "type": "feishu_im_message_check",
+    "expectedText": "CUA-Lark evaluator smoke",
+    "chatName": "CUA测试群",
+    "larkCliArgs": [
+      "im",
+      "+chat-messages-list",
+      "--chat-id",
+      "<TEST_CHAT_ID_OC_XXX>",
+      "--as",
+      "user",
+      "--page-size",
+      "20",
+      "--sort",
+      "desc"
+    ],
+    "timeoutMs": 10000,
+    "pollIntervalMs": 1000
+  }
+}
